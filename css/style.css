@@ -710,6 +710,15 @@ body:after {
   color: var(--jsgc-accent);
 }
 
+.jsgc-hero .jsgc-hero-title {
+  color: #ffffff;
+}
+
+.jsgc-hero .jsgc-eyebrow,
+.jsgc-hero .jsgc-lead {
+  color: rgba(255, 255, 255, 0.88);
+}
+
 .jsgc-contents-grid {
   display: grid;
   gap: 16px 32px;

@@ -283,12 +283,23 @@ jQuery(document).ready(function($) {
             window.location.hash = hash;
           });
         }
+
+        if ( $('body').hasClass('offcanvas-menu') ) {
+          $('body').removeClass('offcanvas-menu');
+          $('.js-menu-toggle').removeClass('active');
+        }
         return;
       }
 
-      if ( $('body').hasClass('offcanvas-menu') ) {
-        $('body').removeClass('offcanvas-menu');
-        $('.js-menu-toggle').removeClass('active');
+      if (href) {
+        e.preventDefault();
+
+        if ( $('body').hasClass('offcanvas-menu') ) {
+          $('body').removeClass('offcanvas-menu');
+          $('.js-menu-toggle').removeClass('active');
+        }
+
+        window.location.href = href;
       }
     });
   };
