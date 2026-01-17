@@ -271,16 +271,25 @@ jQuery(document).ready(function($) {
   var OnePageNavigation = function() {
     var navToggler = $('.site-menu-toggle');
    	$("body").on("click", ".main-menu li a[href^='#'], .smoothscroll[href^='#'], .site-mobile-menu .site-nav-wrap li a", function(e) {
-      e.preventDefault();
+      var href = $(this).attr('href');
+      if (href && href.charAt(0) === '#') {
+        e.preventDefault();
 
-      var hash = this.hash;
+        var hash = this.hash;
+        if ($(hash).length) {
+          $('html, body').animate({
+            'scrollTop': $(hash).offset().top
+          }, 600, 'easeInOutExpo', function(){
+            window.location.hash = hash;
+          });
+        }
+        return;
+      }
 
-      $('html, body').animate({
-        'scrollTop': $(hash).offset().top
-      }, 600, 'easeInOutExpo', function(){
-        window.location.hash = hash;
-      });
-
+      if ( $('body').hasClass('offcanvas-menu') ) {
+        $('body').removeClass('offcanvas-menu');
+        $('.js-menu-toggle').removeClass('active');
+      }
     });
   };
   OnePageNavigation();
